@@ -19,3 +19,32 @@ console.log("#################################".green);
 
 //routing
 app.use(express.static(__dirname + '/public'));
+
+var users = 0;
+
+io.on('connection', function(socket) {
+	var newUser = true;
+
+	socket.on('add user', function(user) {
+		if(!newUser)
+			return;
+
+		//storing username in socket
+		socket.username = user;
+
+		newUser = false;
+
+		//increment user count
+		users++;
+
+		socket.emit('login', {
+			numUsers = users;
+		});
+
+		socket.broadcast.emit('new user', {
+			username: socket.username,
+			numUser: numUsers
+		});
+	});
+
+});
