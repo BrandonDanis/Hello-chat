@@ -38,7 +38,7 @@ io.on('connection', function(socket) {
 		users++;
 
 		socket.emit('login', {
-			numUsers = users;
+			numUsers = users
 		});
 
 		socket.broadcast.emit('new user', {
