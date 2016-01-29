@@ -1,0 +1,27 @@
+
+.loginSection
+{
+	height: 100%;
+	width: 100%;
+	padding: 50px 0;
+	display: table;
+}
+
+.loginSection .wrapper
+{
+	padding: 50px;
+	vertical-align: middle;
+	height: 100%;
+	display: table-cell;
+}
+
+.loginSection .wrapper .row
+{
+	text-align: center;
+}
+
+.usernameInput
+{
+	width: 200px;
+	margin: 10px 0;
+}
