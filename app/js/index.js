@@ -29,7 +29,7 @@ $(function() {
 		$('.loginSection .row').append(notification);
 
 		setTimeout(function() {
-			$('..loginSection .row').remove();
+			$('.loginSection .row .alert').remove();
 		}, 5000);
 
 	});
