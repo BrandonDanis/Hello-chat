@@ -26,6 +26,7 @@ io.on('connection', function(socket) {
 	var newUser = true;
 
 	socket.on('add user', function(user) {
+		console.log(user);
 		if(!newUser)
 			return;
 

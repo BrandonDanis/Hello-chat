@@ -6,18 +6,15 @@ $(function() {
 
 	var socket = io();
 
+	$usernameInput = $(".usernameInput");
 
-	var addNumOfUsers(numUsers) {
-		if(numUsers == 1){
-			var msg = 'There is 1 user!';
-		}else{
-			var msg = 'There are ' + numUsers + ' users!';
-		}
-		console.log(message);
-	}
+	$("#loginButton").click(function(){
+		//username check
+		socket.emit('add user', $usernameInput.val());
+	});
 
-	//socket
 
+	//socket stuff
 	socket.on('login', function(res) {
 		connected = true;
 		alert('you are connected');
