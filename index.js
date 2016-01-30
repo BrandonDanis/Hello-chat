@@ -5,14 +5,14 @@ var app = express();
 //colors!
 var colors = require('colors');
 
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 //defining port
-var port = process.env.PORT || 8080;
+var port = 8080;
 
 //turning on app
-app.listen(port);
+http.listen(port);
 console.log("#################################".green);
 console.log("App is now listening on port 8080".green);
 console.log("#################################".green);
@@ -23,6 +23,7 @@ app.use(express.static(__dirname + '/app'));
 var users = 0;
 
 io.on('connection', function(socket) {
+	console.log("User connected");
 	var newUser = true;
 
 	socket.on('add user', function(user) {
@@ -44,7 +45,7 @@ io.on('connection', function(socket) {
 
 		socket.broadcast.emit('new user', {
 			username: socket.username,
-			numUsers: numUsers
+			numUsers: users
 		});
 	});
 
